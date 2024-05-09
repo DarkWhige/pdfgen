@@ -29,7 +29,12 @@ void Window::my_Window::event_hendler()
 void Window::my_Window::setup()
 {
     win->setFramerateLimit(60);
-    my_widget widget;
-    widget.widget_settup();
-    widget.image(win, "images/luffy.jpg", 0, 0, 1, 1, "NULL");
+    // my_widget::shapes shape;
+    // my_widget::shapes::shape_data data {0, 0, 100, 200, "", sf::Color(0,0,0,255), sf::Color(0,0,0,255), 1.0f, win};
+    // shape.triangle_rec1(&data);
+
+    // my_widget widget;
+    // widget.widget_settup();
+    // widget.set_font("ressources/fonts/arial/Arial.ttf");
+    // widget.text_input(win, 80, 200, 100, 200, "");
 }
