@@ -2,7 +2,8 @@ CC       = g++
 
 SRC      = 	main.cpp		\
 			window.cpp		\
-			widget.cpp
+			widget.cpp		\
+			shapes.cpp
 
 CFLAGS   = -Wall -Wextra -std=c++20 -I/usr/include/SFML -I.
 
