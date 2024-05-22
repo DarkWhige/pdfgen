@@ -1,11 +1,13 @@
 CC       = g++
 
-SRC      = 	main.cpp		\
-			window.cpp		\
-			widget.cpp		\
-			shapes.cpp
+SRC      = 	main.cpp			\
+			window.cpp			\
+			widget.cpp			\
+			UI.cpp				\
+			widgets/Image.cpp	\
+			widgets/Text.cpp
 
-CFLAGS   = -Wall -Wextra -std=c++20 -I/usr/include/SFML -I.
+CFLAGS   = -Wall -Wextra -std=c++20 -I/usr/include/SFML -I. -I./widgets
 
 LDFLAGS  = -lsfml-graphics -lsfml-window -lsfml-system
 

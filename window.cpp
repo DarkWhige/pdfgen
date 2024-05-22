@@ -1,40 +1,49 @@
 #include "window.hpp"
+#include <iostream>
 
-void Window::my_Window::window(int h, int l, std::string title)
+namespace Window
 {
-    win = std::make_unique<sf::RenderWindow>(sf::VideoMode(l, h), title);
-    win->clear(sf::Color::White);
-}
-
-void Window::my_Window::loop()
-{
-    while (win->isOpen()) {
-        event_hendler();
-        setup();
+    void my_Window::window(int h, int l, std::string title)
+    {
+        win = std::make_unique<sf::RenderWindow>(sf::VideoMode(l, h), title);
+        win->clear(sf::Color::White);
+        win->setFramerateLimit(60);
+        UI();
         win->display();
     }
-}
 
-void Window::my_Window::event_hendler()
-{
-    while (win->pollEvent(event)) {
-        if (event.type == sf::Event::Closed)
-            win->close();
-        if (event.type == sf::Event::Resized) {
-            win->clear();
+    void my_Window::loop()
+    {
+        while (win->isOpen()) {
+            event_handler();
+            win->clear(sf::Color::White);
+            for (size_t i = 0; i < widgets.size(); ++i) {
+                widgets[i]->draw(*win);
+            }
+            win->display();
         }
     }
-}
 
-void Window::my_Window::setup()
-{
-    win->setFramerateLimit(60);
-    // my_widget::shapes shape;
-    // my_widget::shapes::shape_data data {0, 0, 100, 200, "", sf::Color(0,0,0,255), sf::Color(0,0,0,255), 1.0f, win};
-    // shape.triangle_rec1(&data);
 
-    // my_widget widget;
-    // widget.widget_settup();
-    // widget.set_font("ressources/fonts/arial/Arial.ttf");
-    // widget.text_input(win, 80, 200, 100, 200, "");
+    void my_Window::event_handler()
+    {
+        while (win->pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                win->close();
+            if (event.type == sf::Event::Resized) {
+                sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
+                win->setView(sf::View(visibleArea));
+            }
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) {
+                std::cout << "Number of widgets: " << widgets.size() << std::endl;
+            }
+        }
+    }
+
+    void my_Window::addWidget(const WidgetInfo& data, sf::RenderWindow* window)
+    {
+        std::shared_ptr<my_widget> newWidget = std::make_shared<my_widget>();
+        newWidget->set_widget(data, window);
+        widgets.push_back(newWidget);
+    }
 }
