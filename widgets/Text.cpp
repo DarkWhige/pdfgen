@@ -26,6 +26,7 @@ namespace Window
         text.setCharacterSize(font_size);
         text.setFillColor(color);
         text.setPosition(pos.x + 5, pos.y + 5);
+        Loaded = true;
     }
 
     std::string Text::get_font_type()

@@ -7,7 +7,7 @@ namespace Window
     {
         win = std::make_unique<sf::RenderWindow>(sf::VideoMode(l, h), title);
         win->clear(sf::Color::White);
-        win->setFramerateLimit(60);
+        win->setFramerateLimit(24);
         UI();
         win->display();
     }
