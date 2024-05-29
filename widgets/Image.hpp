@@ -10,7 +10,11 @@ namespace Window
     class Image : public Iwidget {
         public:
             Image();
+            ~Image();
+
             void SetImage(const WidgetInfo& data, sf::RenderWindow* window);
+
+
             void draw(sf::RenderWindow& window) override;
             void update() override;
 

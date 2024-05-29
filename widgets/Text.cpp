@@ -4,6 +4,8 @@ namespace Window
 {
     Text::Text() {}
 
+    Text::~Text() {}
+
     void Text::SetText(const WidgetInfo& data, sf::RenderWindow* window)
     {
         this->pos = data.pos;
@@ -15,6 +17,12 @@ namespace Window
         this->font_shape = data.font_shape;
         this->font_size = data.font_size;
 
+        SetFont(data, window);
+        Loaded = true;
+    }
+
+    void Text::SetFont(const WidgetInfo& data, sf::RenderWindow* window)
+    {
         font_path += get_font_type();
         font_path += get_font_shape();
         if (!font.loadFromFile(font_path)) {
@@ -26,10 +34,9 @@ namespace Window
         text.setCharacterSize(font_size);
         text.setFillColor(color);
         text.setPosition(pos.x + 5, pos.y + 5);
-        Loaded = true;
     }
 
-    std::string Text::get_font_type()
+    std::string Text::get_font_type() const
     {
         if (font_type == "ARIAL") {
             return "arial/";
@@ -38,7 +45,7 @@ namespace Window
         return "";
     }
 
-    std::string Text::get_font_shape()
+    std::string Text::get_font_shape() const
     {
         if (font_shape == "NORMAL") {
             return "Arial.ttf";

@@ -1,11 +1,13 @@
 CC       = g++
 
-SRC      = 	main.cpp			\
-			window.cpp			\
-			widget.cpp			\
-			UI.cpp				\
-			widgets/Image.cpp	\
-			widgets/Text.cpp
+SRC      = 	main.cpp				\
+			window.cpp				\
+			widget.cpp				\
+			UI.cpp					\
+			widgets/Image.cpp		\
+			widgets/Text.cpp		\
+			widgets/Text_edit.cpp	\
+			events.cpp
 
 CFLAGS   = -Wall -Wextra -std=c++20 -I/usr/include/SFML -I. -I./widgets
 

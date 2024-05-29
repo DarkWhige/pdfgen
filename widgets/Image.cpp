@@ -4,6 +4,8 @@ namespace Window
 {
     Image::Image() {}
 
+    Image::~Image() {}
+
     void Image::SetImage(const WidgetInfo& data, sf::RenderWindow* window)
     {
         this->pos = data.pos;
