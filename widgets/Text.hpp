@@ -5,6 +5,8 @@
 #include "../widgetInfo.hpp"
 #include <iostream>
 
+#include <sstream>
+
 namespace Window
 {
     class Text : public Iwidget {
@@ -17,6 +19,8 @@ namespace Window
             std::string get_font_shape() const;
             void draw(sf::RenderWindow& window) override;
             void update() override;
+
+            std::string wrapText(const std::string& str, float maxWidth);
 
             sf::Text text;
             bool Loaded = false;

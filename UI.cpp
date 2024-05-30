@@ -26,7 +26,7 @@ void UI(Window::my_Window& win)
     T_title_info.type = "TEXT";
     T_title_info.pos = sf::Vector2f(0, 0);
     T_title_info.size = sf::Vector2f(200, 200);
-    T_title_info.color = green;
+    T_title_info.color = black;
     T_title_info.path = "./ressources/fonts/";
     T_title_info.font_size = 24;
     T_title_info.font_type = "ARIAL";
@@ -61,7 +61,7 @@ void UI(Window::my_Window& win)
     TE_title_info_1.content = "";
     TE_title_info_1.outline_thickness = 1.0;
 
-    win.addWidget(P_luffy_info);
+    // win.addWidget(P_luffy_info);
     win.addWidget(T_title_info);
     // addWidget(TE_title_info_1, win.get());
     // addWidget(TE_title_info, win.get());

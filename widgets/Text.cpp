@@ -30,10 +30,15 @@ namespace Window
             return;
         }
         text.setFont(font);
-        text.setString(content);
+        text.setString(wrapText(content, size.x));
         text.setCharacterSize(font_size);
         text.setFillColor(color);
         text.setPosition(pos.x + 5, pos.y + 5);
+
+        while (text.getGlobalBounds().width > size.x || text.getGlobalBounds().height > size.y) {
+            font_size--;
+            text.setCharacterSize(font_size);
+        }
     }
 
     std::string Text::get_font_type() const
@@ -64,5 +69,26 @@ namespace Window
     void Text::update()
     {
 
+    }
+
+    std::string Text::wrapText(const std::string& str, float maxWidth)
+    {
+        std::string wrapped;
+        std::string line;
+        std::istringstream words(str);
+        std::string word;
+
+        while (words >> word) {
+            sf::Text tempText(line + " " + word, font, font_size);
+            if (tempText.getGlobalBounds().width > maxWidth) {
+                wrapped += line + "\n";
+                line = word;
+            } else {
+                if (!line.empty()) line += " ";
+                line += word;
+            }
+        }
+        wrapped += line;
+        return wrapped;
     }
 }
