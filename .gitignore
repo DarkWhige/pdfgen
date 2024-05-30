@@ -1,2 +1,3 @@
 .vscode
 shapes.cpp
+*.o
