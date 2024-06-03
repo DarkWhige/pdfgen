@@ -27,10 +27,12 @@ namespace Window
             /// @brief destructeur de la window.
             ~my_Window();
 
+            /// @brief stocker les valeurs par défaut de la fenètre
+            /// @param data structure de données de la window
+            void set_window_data(Window_info data);
+
             /// @brief Création de la window.
-            /// @param data structure de données de
-            /// la window
-            void window(Window_info data);
+            void window();
 
             /// @brief Boucle principale de la window
             void loop();
@@ -38,6 +40,26 @@ namespace Window
             /// @brief get la variable de la window actuelle
             /// @return variable de la window
             sf::RenderWindow* get_win() const;
+
+            /// @brief getter
+            /// @return hauteur de la fenetre
+            int get_win_height() const;
+
+            /// @brief getter
+            /// @return largeur de la fenetre
+            int get_win_lenght() const;
+
+            /// @brief getter
+            /// @return FPS de la fenetre
+            int get_win_FPS() const;
+
+            /// @brief getter
+            /// @return titre de la fenetre
+            std::string get_win_title() const;
+
+            /// @brief getter
+            /// @return couleur de la fenetre
+            sf::Color get_win_bg_color() const;
             // ------------------------------------ fontions relative au widgets ------------------------------------------------//
 
             /// @brief ajout d'un widget dans une liste avec les infos donnés
@@ -72,13 +94,24 @@ namespace Window
             /// @brief gestion du déplacement des widget
             void move_widget();
         private:
+            // ------------------------------------ Variables relatives a la window ----------------------------------------------//
+
             std::unique_ptr<sf::RenderWindow> win;              // VARIABLE : valleur de la window
-            std::vector<std::shared_ptr<my_widget>> widgets;    // VARIABLE : liste de vecteurs
             sf::Event event;                                    // VARIABLE : valeur des evenements
+            int height;                                         // VARIABLE : hauteur de la fenêtre
+            int lenght;                                         // VARIABLE : largeur de la fenêtre
+            std::string title;                                  // VARIABLE : titre
+            int FPS;                                            // VARIABLE : images par secondes
+            sf::Color bg_color;                                 // VARIABLE : couleur de l'arrère plan
+
+            // ------------------------------------ Variables relatives au périphériques -----------------------------------------//
 
             sf::Vector2f mouse;                                 // VARIABLE : souris
             sf::Cursor cursor;                                  // VARIABLE : forme de la souris
 
+            // ------------------------------------ Variables relatives au widgets -----------------------------------------------//
+
+            std::vector<std::shared_ptr<my_widget>> widgets;    // VARIABLE : liste de vecteurs
             bool is_dragging = false;                           // VARIABLE : est-ce qu'on est prêt a déplacer un objet ?
             my_widget* dragged_widget = nullptr;                // VARIABLE : quel widget on doit déplacer
             sf::Vector2f drag_offset;                           // VARIABLE : position de l'offset pour le positionnement de la souris sur le widget
