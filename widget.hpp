@@ -50,9 +50,9 @@ namespace Window
             /// @brief actualisation du widget
             void update() override;
         private:
-            WidgetInfo data;
-            Image image;
-            Text text;
-            TextBE text_editor_b;
+            WidgetInfo data;        // data structure des infos du widget
+            Image image;            // widget de type image
+            Text text;              // widget de type text
+            TextBE text_editor_b;   // widget de type editeur de texte basique
     };
 }

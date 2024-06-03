@@ -3,37 +3,61 @@
 
 namespace Window
 {
-    my_widget::my_widget() {}
-    
-    my_widget::~my_widget() {}
+    my_widget::~my_widget() {}  // destructeur
 
+    my_widget::my_widget() {}   // constructeur
+    
     void my_widget::set_widget(const WidgetInfo& data, sf::RenderWindow* window)
     {
-        this->data = data;
-        if (data.type == "PICTURE") {
-            image.SetImage(data, window);
-        } else if (data.type == "TEXT") {
-            text.SetText(data, window);
-        } else if (data.type == "TEXT_EDITOR_B") {
-            text_editor_b.SetTextBE(data, window);
+        this->data = data;  // stockage de la liste de donnée "data" dans la classe
+        if (data.type == "PICTURE") {   // si le widget est une image,
+            image.SetImage(data, window);   // appel de la fonction pour setup l'image
+        } else if (data.type == "TEXT") {   // si le widget est un texte
+            text.SetText(data, window);     // appel de la fonction pour setup le texte
+        } else if (data.type == "TEXT_EDITOR_B") {  // si le widget est un editeur de texte basique
+            text_editor_b.SetTextBE(data, window);  // appel de la fonction pour setup l'editeur de texte basique
         }
     }
 
-    WidgetInfo my_widget::getData(void)
+    WidgetInfo my_widget::get_data(void) const
     {
-        return this->data;
+        return this->data;      // renvoi les infos demandés
+    }
+
+    Image my_widget::get_image(void) const
+    {
+        return this->image;     // renvoi les infos demandés
+    }
+
+    Text my_widget::get_text(void) const
+    {
+        return this->text;      // renvoi les infos demandés
+    }
+
+    TextBE my_widget::get_text_editor_b(void) const
+    {
+        return this->text_editor_b;     // renvoi les infos demandés
+    }
+
+    void my_widget::set_pos(const sf::Vector2f& new_pos)
+    {
+        data.pos = new_pos;     // changement des positions
+        image.sprite.setPosition(data.pos);     // set des positions directement dans le widget associé
+        text.text.setPosition(data.pos);        // set des positions directement dans le widget associé 
+        text_editor_b.text.setPosition(data.pos);   // set des positions directement dans le widget associé
     }
 
     void my_widget::draw(sf::RenderWindow& window)
     {
-        image.draw(window);
-        text.draw(window);
-        text_editor_b.draw(window);
+        image.draw(window); // draw de l'image
+        text.draw(window);  // draw du texte
+        text_editor_b.draw(window); //draw de l'editeur de texte basique
     }
 
     void my_widget::update()
     {
-        // Implémenter ici les logiques de mise à jour si nécessaire
+        image.sprite.setPosition(data.pos); // mise a jour de l'image
+        text.text.setPosition(data.pos);    // mise a jour du texte
+        text_editor_b.text.setPosition(data.pos);// mise a jour de l'editeur de texte basique
     }
-
 }
