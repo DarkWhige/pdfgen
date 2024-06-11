@@ -6,43 +6,41 @@ namespace Window
 {
     void my_Window::set_mouse()
     {
-        if (event.type == sf::Event::MouseMoved) {
-            mouse.x = event.mouseMove.x;
-            mouse.y = event.mouseMove.y;
-        } else if (event.type == sf::Event::MouseButtonPressed) {
-            mouse.x = event.mouseButton.x;
-            mouse.y = event.mouseButton.y;
+        if (event.type == sf::Event::MouseMoved) { // check si la souris est bougée
+            mouse.x = event.mouseMove.x; // stockage de la position x de la souris dans la classe
+            mouse.y = event.mouseMove.y; // stockage de la position y de la souris dans la classe
+        } else if (event.type == sf::Event::MouseButtonPressed) { // check si le clic de la souris est pressé
+            mouse.x = event.mouseButton.x; // stockage de la position x de la souris lors d'un clic dans la classe
+            mouse.y = event.mouseButton.y; // stockage de la position y de la souris lors d'un clic dans la classe
         }
     }
 
     void my_Window::event_handler()
     {
-        while (win->pollEvent(event)) {
-            set_mouse();
-            if (event.type == sf::Event::Closed)
-                close_win();
-            if (event.type == sf::Event::Resized) {
-                resize_win();
-            }
-            if (event.type == sf::Event::KeyPressed) {
-                key_pressed();
-            }
-            if (event.type == sf::Event::MouseMoved || event.type == sf::Event::MouseButtonPressed || event.type == sf::Event::MouseButtonReleased) {
-                mouse_moved();
-                move_widget();
+        while (win->pollEvent(event)) { // tant qu'il y a des evenements
+            set_mouse();    //setup de la souris
+            if (event.type == sf::Event::Closed)    // si on veut fermer la fenetre
+                close_win();    // on ferme la fenetre
+            if (event.type == sf::Event::Resized) // si la fenetre se fait resize
+                resize_win();   // on calcul comment resize
+            if (event.type == sf::Event::KeyPressed)    // si une touche du clavier est préssée
+                key_pressed();  // on gere les inputs
+            if (event.type == sf::Event::MouseMoved || event.type == sf::Event::MouseButtonPressed || event.type == sf::Event::MouseButtonReleased) {   // si la souris est bougée et le clic gauche est pressé ou relaché,
+                mouse_moved();  // gestion d'evenement si la souris est bougée (ex : ganger l'apparence de la souris)
+                move_widget();  // gestion du déplacement des widgets avec la souris
             }
         }
     }
 
     void my_Window::close_win()
     {
-        delWidget();
-        win->close();
+        delWidget();    // free de la memoire
+        win->close();   // fermeture de la fenetre
     }
 
     void my_Window::resize_win()
     {
-        sf::Vector2u sizemin(200,300);
+        sf::Vector2u sizemin(200,300);  // fonction a retravailler
         sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
         win->setView(sf::View(visibleArea));
         if (win->getSize().x <= 200) {

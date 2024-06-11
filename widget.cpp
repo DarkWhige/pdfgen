@@ -43,26 +43,26 @@ namespace Window
 
     void my_widget::set_pos(const sf::Vector2f& new_pos)
     {
-        data.pos = new_pos;     // changement des positions
-        image.sprite.setPosition(data.pos);     // set des positions directement dans le widget associé
-        text.text.setPosition(data.pos);        // set des positions directement dans le widget associé 
-        text_editor_b.text.setPosition(data.pos);   // set des positions directement dans le widget associé
-        gif.sprite.setPosition(data.pos);
+        data.pos = new_pos;                         // set des positions du widget
+        image.sprite.setPosition(data.pos);         // set des positions du widget
+        text.text.setPosition(data.pos);            // set des positions du widget 
+        text_editor_b.text.setPosition(data.pos);   // set des positions du widget
+        gif.sprite.setPosition(data.pos);           // set des positions du widget
     }
 
     void my_widget::draw(sf::RenderWindow& window)
     {
-        image.draw(window); // draw de l'image
-        text.draw(window);  // draw du texte
+        image.draw(window);         // draw de l'image
+        text.draw(window);          // draw du texte
         text_editor_b.draw(window); //draw de l'editeur de texte basique
-        gif.draw(window);
+        gif.draw(window);           // draw du gif
     }
 
     void my_widget::update()
     {
-        image.sprite.setPosition(data.pos); // mise a jour de l'image
-        text.text.setPosition(data.pos);    // mise a jour du texte
-        text_editor_b.text.setPosition(data.pos);// mise a jour de l'editeur de texte basique
-        gif.sprite.setPosition(data.pos);
+        image.sprite.setPosition(data.pos);         // mise a jour de l'image
+        text.text.setPosition(data.pos);            // mise a jour du texte
+        text_editor_b.text.setPosition(data.pos);   // mise a jour de l'editeur de texte basique
+        gif.sprite.setPosition(data.pos);           // mise a jour du gif
     }
 }
