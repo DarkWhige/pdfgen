@@ -7,6 +7,7 @@
 #include "widgets/Image.hpp"        // include du widget d'image
 #include "widgets/Text.hpp"         // include du wifget de texte
 #include "widgets/Text_edit.hpp"    // include du widget d'editeur de texte
+#include "widgets/Gif.hpp"          // include du widget de gif
 
 namespace Window
 {
@@ -54,5 +55,6 @@ namespace Window
             Image image;            // widget de type image
             Text text;              // widget de type text
             TextBE text_editor_b;   // widget de type editeur de texte basique
+            Gif gif;                // widget de type gif (image animée)
     };
 }

@@ -16,6 +16,8 @@ namespace Window
             text.SetText(data, window);     // appel de la fonction pour setup le texte
         } else if (data.type == "TEXT_EDITOR_B") {  // si le widget est un editeur de texte basique
             text_editor_b.SetTextBE(data, window);  // appel de la fonction pour setup l'editeur de texte basique
+        } else if (data.type == "GIF") {
+            gif.SetGif(data, window);
         }
     }
 
@@ -45,6 +47,7 @@ namespace Window
         image.sprite.setPosition(data.pos);     // set des positions directement dans le widget associé
         text.text.setPosition(data.pos);        // set des positions directement dans le widget associé 
         text_editor_b.text.setPosition(data.pos);   // set des positions directement dans le widget associé
+        gif.sprite.setPosition(data.pos);
     }
 
     void my_widget::draw(sf::RenderWindow& window)
@@ -52,6 +55,7 @@ namespace Window
         image.draw(window); // draw de l'image
         text.draw(window);  // draw du texte
         text_editor_b.draw(window); //draw de l'editeur de texte basique
+        gif.draw(window);
     }
 
     void my_widget::update()
@@ -59,5 +63,6 @@ namespace Window
         image.sprite.setPosition(data.pos); // mise a jour de l'image
         text.text.setPosition(data.pos);    // mise a jour du texte
         text_editor_b.text.setPosition(data.pos);// mise a jour de l'editeur de texte basique
+        gif.sprite.setPosition(data.pos);
     }
 }

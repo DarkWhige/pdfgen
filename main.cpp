@@ -11,7 +11,7 @@ int main()
     window_data.height = 1080;  // la hauteur sera de 1080
     window_data.lenght = 1920;  // la largeur seta de 1920
     window_data.FPS = 60;   // le taux d'image par seconde sera de 60
-    window_data.bg_color = sf::Color::Blue;
+    window_data.bg_color = sf::Color::White;
 
     win.set_window_data(window_data);   // setter des données de la window dans la classe
     win.window(); // création de la fenètre a partir de la fonction widow se trouvant dans win
