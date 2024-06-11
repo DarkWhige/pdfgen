@@ -51,6 +51,7 @@ namespace Window
     {
         if (font_type == "ARIAL") {
             return "arial/";
+        // } else if (font_type == "")
         }
         std::cerr << "the font doesn't exist\n";
         return "";
