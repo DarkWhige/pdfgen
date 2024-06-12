@@ -55,9 +55,9 @@ Comme ameilorations futures, il pourrait y avoir les Widgets suivants :
 - Un widget video, pour ajouter un "Lecteur vidéo" pour montrer le fonctionnement de l'application.
 - Un widget d'editeur de texte, pour pouvoir faire un espace ou l'utilisateur peut écrire.
 - Un widget d'éditeur de texte, pour pouvoir faire un espace ou l'utilisateur peut écrire mais avec d'autres spécificités, comme le fait de pouvoir ecrire en italique, en gras etc...
-- Un widget dropdown, pour pouvoir avoir un menu dropdown
-- 
+- Un widget dropdown, pour pouvoir avoir un menu dropdown.
+- D'autres widgets pourrait êtres ajoutés.
 
-- Avoir la possibilité de zommer dans la fenêtre
-- Avoir la possibilité de scroller dans la fenêtre
-- Avoir un changement de thème
+- Avoir la possibilité de zommer dans la fenêtre.
+- Avoir la possibilité de scroller dans la fenêtre.
+- Avoir un changement de thème.
